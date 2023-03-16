@@ -66,7 +66,7 @@ class Jira {
     })
 
     if (versionResult.total === 0) {
-      throw new Error('Unreleased Jira version not found');
+      throw new Error('Jira version not found');
     }
 
     const sorted = versionResult.values.sort(
