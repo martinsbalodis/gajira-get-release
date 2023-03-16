@@ -1,19 +1,24 @@
-name: Jira Find issue key
-description: Find an issue inside event
+name: Jira find release
+description: Jira find release with filter parameters
 branding:
   icon: 'book-open'
   color: 'blue'
 inputs:
-  string:
-    description: Provide a string to extract issue key from
-    required: false
-  from:
-    description: Find from predefined place (should be either 'branch', or 'commits')
-    required: false
-    default: commits
+  projectKey:
+    description: Jira project key case sensitive
+    required: true
+  prefix:
+    description: Version prefix
+    required: true
+  status:
+    description: Version status. (released, unreleased, archived)
+    required: true
+  order:
+    description: Order direction, ordered by id. (asc, desc)
+    required: true
 outputs:
-  issue:
-    description: Key of the found issue
+  version:
+    description: Jira version object
 runs:
   using: 'node16'
   main: './dist/index.js'
