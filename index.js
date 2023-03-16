@@ -18,7 +18,8 @@ async function exec () {
       config,
     }).execute()
 
-    core.setOutput('version', result)
+    core.setOutput('name', result.name)
+    core.setOutput('nameWithoutPrefix', result.nameWithoutPrefix)
   } catch (error) {
     core.setFailed(error.toString())
   }
