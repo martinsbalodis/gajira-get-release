@@ -1,0 +1,28 @@
+name: Run action tests
+
+on: [ push ]
+
+jobs:
+  action-tests:
+    runs-on: ubuntu-latest
+    env:
+      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+      JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+    steps:
+      - name: Login
+        uses: atlassian/gajira-login@master
+
+      - name: Get oldest unreleased version
+        id: get_version
+        uses: martinsbalodis/gajira-get-release@master
+        with:
+          projectKey: TEST
+          prefix: Cloud
+          status: unreleased
+          order: asc
+
+      - name: Print oldest unreleased version
+        run: |
+          echo ${{ steps.get_version.outputs.name }}
+          echo ${{ steps.get_version.outputs.nameWithoutPrefix }}

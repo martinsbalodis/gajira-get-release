@@ -87,4 +87,4 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-__tests__/
+.DS_Store
