@@ -4,7 +4,7 @@
 
 ```yaml
 - name: Get jira version
-  uses: martinsbalodis/gajira-transition@master
+  uses: martinsbalodis/gajira-get-release@master
   id: version
   with:
     projectKey: TEST
